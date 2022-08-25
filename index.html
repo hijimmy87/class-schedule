@@ -14,28 +14,19 @@
     <main class="container-sm my-4">
         <section>
             <div class="row">
-                <label for="select" class="col-sm-2 col-form-label">選擇班級</label>
-                <div class="col-sm-3">
-                    <select id="cls-select" class="form-select">
-                        <option value="" disabled selected>選擇班級</option>
-                        <option value="301">301</option>
-                        <option value="302">302</option>
-                        <option value="303">303</option>
-                        <option value="304">304</option>
-                        <option value="305">305</option>
-                        <option value="306">306</option>
-                        <option value="307">307</option>
-                        <option value="308">308</option>
-                        <option value="309">309</option>
-                        <option value="TST">TEST</option>
+                <label for="select" class="col-6 col-sm-2 col-form-label">選擇班級</label>
+                <div class="col-6 col-sm-3">
+                    <select id="select" class="form-select">
+                        <option value="NULL" disabled selected>選擇班級</option>
                     </select>
                 </div>
             </div>
         </section>
         <table id="table" class="table table-hover table-bordered caption-top align-middle text-center">
+            <caption class="fs-5">請選擇班級</caption>
             <thead class="visually-hidden">
                 <tr class="fs-4">
-                    <th>節次</th>
+                    <th></th>
                     <th>一</th>
                     <th>二</th>
                     <th>三</th>
@@ -43,13 +34,11 @@
                     <th>五</th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
-            <caption class="fs-5">請選擇班級</caption>
+            <tbody></tbody>
         </table>
     </main>
-    <script src="/schedule.js"></script>
-    <script src="/main.js"></script>
+    <script src="schedule.min.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
