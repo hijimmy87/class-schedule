@@ -2,41 +2,44 @@
 <html lang="zh-tw">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>課表</title>
-    <meta name="description" content="就是課表">
-    <meta name="og:type" content="type">
-    <meta name="og:title" content="課表">
-    <meta name="og:description" content="就是課表">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>課表</title>
+  <meta name="description" content="就是課表">
+  <meta name="og:type" content="type">
+  <meta name="og:title" content="課表">
+  <meta name="og:description" content="就是課表">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <main>
-        <form><label for="select">班級</label>
-            <div><select id="select">
-                    <option value="NULL" disabled selected>選擇班級</option>
-                </select></div>
-        </form>
-        <table id="table">
-            <caption>請選擇班級</caption>
-            <thead hidden>
-                <tr class="fs-4">
-                    <th></th>
-                    <th>一</th>
-                    <th>二</th>
-                    <th>三</th>
-                    <th>四</th>
-                    <th>五</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </main>
-    <script src="schedule.js"></script>
-    <script src="main.js"></script>
+  <main>
+    <form>
+      <label for="select">班級</label>
+      <div>
+        <select id="select">
+          <option value="NULL" disabled selected>選擇班級</option>
+        </select>
+      </div>
+    </form>
+    <table id="table">
+      <caption>請選擇班級</caption>
+      <thead hidden>
+        <tr class="fs-4">
+          <th></th>
+          <th>一</th>
+          <th>二</th>
+          <th>三</th>
+          <th>四</th>
+          <th>五</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+  <script src="schedule.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>
