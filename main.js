@@ -1,54 +1,45 @@
-const change = cls => {
-  if (Math.random() < 0.0487) {
-    setTimeout(() => {
-      let a = document.createElement('a');
-      a.href = 'https://youtu.be/jNQXAC9IVRw';
-      a.click();
-    }, 1487);
-  }
-  const table = document.getElementById('table');
-  table.children[2].innerHTML = '';
-  if (sc[cls] === undefined) {
-    table.children[0].innerText = 'Not Found';
-    table.children[1].setAttribute('hidden', '');
-    return;
-  }
-  table.children[0].innerText = `Class ${cls}`;
-  table.children[1].removeAttribute('hidden');
-  for (let i = 0; i < sc[cls].length; i++) {
-    let tr = document.createElement('tr'),
-      th = document.createElement('th');
-    table.children[2].appendChild(tr);
-    tr.appendChild(th);
-    th.innerText = i + 1;
-    th.classList.add('fs-4');
-    for (let j = 0; j < sc[cls][i].length; j++) {
-      let td = document.createElement('td');
-      tr.appendChild(td);
-      if (sc[cls][i][j])
-        td.innerHTML = `<div class="fs-4">${cs[sc[cls][i][j] >> 8]}</div><div>${cs[sc[cls][i][j] & 255]}</div>`;
-    }
-  }
-};
+import { gen_schedule, table_size, time } from "./data.js";
 
-(() => {
-  const selected = '306',
-    select = document.getElementById('select');
-  for (const cls in sc) {
-    let opt = document.createElement('option');
-    select.appendChild(opt);
-    opt.value = cls;
-    opt.innerText = cls;
-    if (cls == selected) {
-      opt.selected = true;
-      change(cls);
+const schedule = gen_schedule();
+
+window.onload = () => {
+    let tr, th, td;
+    const table = document.getElementsByTagName("tbody")[0];
+
+    tr = document.createElement("tr");
+    tr.appendChild(document.createElement("th"));
+    for (let i = 0; i < table_size[0]; i++) {
+        th = document.createElement("th");
+        tr.appendChild(th);
+        th.scope = "col";
+        th.innerText = "一二三四五六日"[i];
     }
-  }
-  let opt = document.createElement('option');
-  opt.value = 'TST';
-  opt.innerText = 'Test';
-  select.appendChild(opt);
-  select.onchange = () => {
-    change(select.selectedOptions[0].value)
-  };
-})();
+    document.getElementsByTagName("thead")[0].appendChild(tr);
+
+    for (let i = 0; i < table_size[1]; i++) {
+        tr = document.createElement("tr");
+        th = document.createElement("th");
+        table.appendChild(tr);
+        tr.appendChild(th);
+        th.scope = "row";
+        th.innerText = time[i];
+        for (let j = 0; j < table_size[0]; j++) {
+            td = document.createElement("td");
+            tr.appendChild(td);
+            const time = ((j + 1) * 100 + i).toString(),
+                cls = schedule[time];
+            if (cls === undefined) td.innerText = "";
+            else {
+                let span = document.createElement("span");
+                span.innerText = schedule[time].name;
+                td.appendChild(span);
+                td.appendChild(document.createElement("br"));
+
+                span = document.createElement("span");
+                span.classList.add("font-monospace");
+                span.innerText = schedule[time].place;
+                td.appendChild(span);
+            }
+        }
+    }
+};
